@@ -17,7 +17,6 @@ class MedicoController {
     }
 
     public function crear() {
-        // Obtener lista de especialidades para el formulario
         $especialidades = $this->especialidadModel->leer();
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -50,8 +49,6 @@ class MedicoController {
             header('Location: index.php?controller=medico&action=index');
             return;
         }
-
-        // Obtener lista de especialidades para el formulario
         $especialidades = $this->especialidadModel->leer();
         $this->medicoModel->id_medico = $_GET['id'];
         
@@ -62,7 +59,6 @@ class MedicoController {
             $this->medicoModel->correo = $_POST['correo'];
             $this->medicoModel->id_especialidad = $_POST['id_especialidad'];
 
-            // Validar JVPM único excluyendo el ID actual
             if($this->medicoModel->existeJVPM($_POST['numero_jvpm'], $_GET['id'])) {
                 $error = "El número JVPM ya está registrado en el sistema.";
                 require_once 'views/medicos/editar.php';

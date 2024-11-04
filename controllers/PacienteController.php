@@ -21,8 +21,6 @@ class PacienteController {
             $this->pacienteModel->telefono = $_POST['telefono'];
             $this->pacienteModel->correo = $_POST['correo'];
             $this->pacienteModel->direccion = $_POST['direccion'];
-
-            // Validar DUI único
             if($this->pacienteModel->existeDui($_POST['dui'])) {
                 $error = "El DUI ya está registrado en el sistema.";
                 require_once 'views/pacientes/crear.php';
@@ -56,7 +54,6 @@ class PacienteController {
             $this->pacienteModel->correo = $_POST['correo'];
             $this->pacienteModel->direccion = $_POST['direccion'];
 
-            // Validar DUI único excluyendo el ID actual
             if($this->pacienteModel->existeDui($_POST['dui'], $_GET['id'])) {
                 $error = "El DUI ya está registrado en el sistema.";
                 require_once 'views/pacientes/editar.php';

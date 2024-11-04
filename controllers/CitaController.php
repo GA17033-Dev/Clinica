@@ -25,7 +25,6 @@ class CitaController
 
     public function crear()
     {
-        // Obtener listas para los formularios
         $pacientes = $this->pacienteModel->leer();
         $medicos = $this->medicoModel->leer();
 
@@ -56,7 +55,6 @@ class CitaController
             return;
         }
 
-        // Obtener listas para los formularios
         $pacientes = $this->pacienteModel->leer();
         $medicos = $this->medicoModel->leer();
 
@@ -98,7 +96,6 @@ class CitaController
         $this->citaModel->id_cita = $_GET['id'];
         $nuevo_estado = $_GET['estado'];
 
-        // Validar que el estado sea válido
         $estados_validos = ['programada', 'completada', 'cancelada'];
         if (!in_array($nuevo_estado, $estados_validos)) {
             header('Location: index.php?controller=cita&action=index');

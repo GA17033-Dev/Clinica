@@ -18,7 +18,6 @@ class EspecialidadController {
             $this->especialidadModel->nombre_especialidad = $_POST['nombre_especialidad'];
             $this->especialidadModel->descripcion = $_POST['descripcion'];
 
-            // Validar nombre único
             if($this->especialidadModel->existeNombre($_POST['nombre_especialidad'])) {
                 $error = "Ya existe una especialidad con ese nombre.";
                 require_once 'views/especialidades/crear.php';
@@ -48,7 +47,6 @@ class EspecialidadController {
             $this->especialidadModel->nombre_especialidad = $_POST['nombre_especialidad'];
             $this->especialidadModel->descripcion = $_POST['descripcion'];
 
-            // Validar nombre único excluyendo el ID actual
             if($this->especialidadModel->existeNombre($_POST['nombre_especialidad'], $_GET['id'])) {
                 $error = "Ya existe una especialidad con ese nombre.";
                 require_once 'views/especialidades/editar.php';
