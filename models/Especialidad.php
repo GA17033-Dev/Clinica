@@ -5,7 +5,7 @@ class Especialidad {
     private $conn;
     private $table_name = "especialidades";
 
-    // Propiedades
+
     public $id_especialidad;
     public $nombre_especialidad;
     public $descripcion;
@@ -16,7 +16,7 @@ class Especialidad {
         $this->conn = $database->getConnection();
     }
 
-    // Crear nueva especialidad
+
     public function crear() {
         $query = "INSERT INTO " . $this->table_name . " 
                 (nombre_especialidad, descripcion) 
@@ -28,7 +28,7 @@ class Especialidad {
         $this->nombre_especialidad = htmlspecialchars(strip_tags($this->nombre_especialidad));
         $this->descripcion = htmlspecialchars(strip_tags($this->descripcion));
 
-        // Vincular valores
+    
         $stmt->bindParam(":nombre_especialidad", $this->nombre_especialidad);
         $stmt->bindParam(":descripcion", $this->descripcion);
 
@@ -38,7 +38,7 @@ class Especialidad {
         return false;
     }
 
-    // Leer todas las especialidades
+
     public function leer() {
         $query = "SELECT * FROM " . $this->table_name . " 
                 WHERE estado = 1 
@@ -49,7 +49,6 @@ class Especialidad {
         return $stmt;
     }
 
-    // Leer una especialidad
     public function leerUno() {
         $query = "SELECT * FROM " . $this->table_name . " 
                 WHERE id_especialidad = ? AND estado = 1 
@@ -68,8 +67,6 @@ class Especialidad {
         }
         return false;
     }
-
-    // Actualizar especialidad
     public function actualizar() {
         $query = "UPDATE " . $this->table_name . " 
                 SET nombre_especialidad = :nombre_especialidad,
@@ -78,7 +75,6 @@ class Especialidad {
 
         $stmt = $this->conn->prepare($query);
 
-        // Sanitizar datos
         $this->nombre_especialidad = htmlspecialchars(strip_tags($this->nombre_especialidad));
         $this->descripcion = htmlspecialchars(strip_tags($this->descripcion));
         $this->id_especialidad = htmlspecialchars(strip_tags($this->id_especialidad));
@@ -94,9 +90,8 @@ class Especialidad {
         return false;
     }
 
-    // Eliminar especialidad (eliminación lógica)
     public function eliminar() {
-        // Primero verificar si hay médicos asociados
+
         if($this->tieneMediacosAsociados()) {
             return false;
         }
@@ -115,8 +110,6 @@ class Especialidad {
         }
         return false;
     }
-
-    // Verificar si existe una especialidad con el mismo nombre
     public function existeNombre($nombre, $excluir_id = null) {
         $query = "SELECT COUNT(*) as count FROM " . $this->table_name . " 
                 WHERE nombre_especialidad = ? AND estado = 1" . 
@@ -132,8 +125,6 @@ class Especialidad {
         
         return $row['count'] > 0;
     }
-
-    // Verificar si la especialidad tiene médicos asociados
     private function tieneMediacosAsociados() {
         $query = "SELECT COUNT(*) as count FROM medicos 
                 WHERE id_especialidad = ? AND estado = 1";

@@ -5,7 +5,7 @@ class Medico {
     private $conn;
     private $table_name = "medicos";
 
-    // Propiedades
+
     public $id_medico;
     public $nombre_completo;
     public $numero_jvpm;
@@ -19,7 +19,7 @@ class Medico {
         $this->conn = $database->getConnection();
     }
 
-    // Crear nuevo médico
+
     public function crear() {
         $query = "INSERT INTO " . $this->table_name . " 
                 (nombre_completo, numero_jvpm, telefono, correo, id_especialidad) 
@@ -27,14 +27,13 @@ class Medico {
 
         $stmt = $this->conn->prepare($query);
 
-        // Sanitizar datos
+
         $this->nombre_completo = htmlspecialchars(strip_tags($this->nombre_completo));
         $this->numero_jvpm = htmlspecialchars(strip_tags($this->numero_jvpm));
         $this->telefono = htmlspecialchars(strip_tags($this->telefono));
         $this->correo = htmlspecialchars(strip_tags($this->correo));
         $this->id_especialidad = htmlspecialchars(strip_tags($this->id_especialidad));
 
-        // Vincular valores
         $stmt->bindParam(":nombre_completo", $this->nombre_completo);
         $stmt->bindParam(":numero_jvpm", $this->numero_jvpm);
         $stmt->bindParam(":telefono", $this->telefono);
@@ -47,7 +46,7 @@ class Medico {
         return false;
     }
 
-    // Leer todos los médicos con su especialidad
+
     public function leer() {
         $query = "SELECT m.*, e.nombre_especialidad 
                 FROM " . $this->table_name . " m 
@@ -60,7 +59,7 @@ class Medico {
         return $stmt;
     }
 
-    // Leer un médico
+ 
     public function leerUno() {
         $query = "SELECT m.*, e.nombre_especialidad 
                 FROM " . $this->table_name . " m 
@@ -85,7 +84,7 @@ class Medico {
         return false;
     }
 
-    // Actualizar médico
+
     public function actualizar() {
         $query = "UPDATE " . $this->table_name . " 
                 SET nombre_completo = :nombre_completo,
@@ -97,7 +96,6 @@ class Medico {
 
         $stmt = $this->conn->prepare($query);
 
-        // Sanitizar datos
         $this->nombre_completo = htmlspecialchars(strip_tags($this->nombre_completo));
         $this->numero_jvpm = htmlspecialchars(strip_tags($this->numero_jvpm));
         $this->telefono = htmlspecialchars(strip_tags($this->telefono));
@@ -119,7 +117,7 @@ class Medico {
         return false;
     }
 
-    // Eliminar médico (eliminación lógica)
+
     public function eliminar() {
         $query = "UPDATE " . $this->table_name . " SET estado = 0 WHERE id_medico = :id_medico";
         $stmt = $this->conn->prepare($query);
@@ -133,7 +131,6 @@ class Medico {
         return false;
     }
 
-    // Verificar si existe un número JVPM
     public function existeJVPM($numero_jvpm, $excluir_id = null) {
         $query = "SELECT COUNT(*) as count FROM " . $this->table_name . " 
                 WHERE numero_jvpm = ? AND estado = 1" . 
@@ -150,7 +147,6 @@ class Medico {
         return $row['count'] > 0;
     }
 
-    // Obtener médicos por especialidad
     public function obtenerPorEspecialidad($id_especialidad) {
         $query = "SELECT * FROM " . $this->table_name . " 
                 WHERE id_especialidad = ? AND estado = 1 

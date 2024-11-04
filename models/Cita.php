@@ -20,9 +20,7 @@ class Cita {
         $this->conn = $database->getConnection();
     }
 
-    // Crear nueva cita
     public function crear() {
-        // Verificar disponibilidad antes de crear
         if($this->existeCitaEnHorario()) {
             return false;
         }
@@ -43,7 +41,6 @@ class Cita {
         $this->motivo_consulta = htmlspecialchars(strip_tags($this->motivo_consulta));
         $this->observaciones = htmlspecialchars(strip_tags($this->observaciones));
 
-        // Vincular valores
         $stmt->bindParam(":fecha_cita", $this->fecha_cita);
         $stmt->bindParam(":hora_cita", $this->hora_cita);
         $stmt->bindParam(":id_paciente", $this->id_paciente);
@@ -57,8 +54,6 @@ class Cita {
         }
         return false;
     }
-
-    // Leer todas las citas con información relacionada
     public function leer($filtro_estado = null) {
         $query = "SELECT c.*, p.nombre_completo as nombre_paciente, p.dui, 
                          m.nombre_completo as nombre_medico, e.nombre_especialidad
@@ -83,8 +78,6 @@ class Cita {
         $stmt->execute();
         return $stmt;
     }
-
-    // Leer una cita específica
     public function leerUno() {
         $query = "SELECT c.*, p.nombre_completo as nombre_paciente, p.dui, 
                          m.nombre_completo as nombre_medico, e.nombre_especialidad
@@ -114,9 +107,9 @@ class Cita {
         return false;
     }
 
-    // Actualizar cita
+
     public function actualizar() {
-        // Verificar disponibilidad antes de actualizar
+
         if($this->existeCitaEnHorario(true)) {
             return false;
         }
@@ -133,7 +126,6 @@ class Cita {
 
         $stmt = $this->conn->prepare($query);
 
-        // Sanitizar datos
         $this->fecha_cita = htmlspecialchars(strip_tags($this->fecha_cita));
         $this->hora_cita = htmlspecialchars(strip_tags($this->hora_cita));
         $this->id_paciente = htmlspecialchars(strip_tags($this->id_paciente));
@@ -143,7 +135,6 @@ class Cita {
         $this->observaciones = htmlspecialchars(strip_tags($this->observaciones));
         $this->id_cita = htmlspecialchars(strip_tags($this->id_cita));
 
-        // Vincular valores
         $stmt->bindParam(":fecha_cita", $this->fecha_cita);
         $stmt->bindParam(":hora_cita", $this->hora_cita);
         $stmt->bindParam(":id_paciente", $this->id_paciente);
@@ -159,7 +150,7 @@ class Cita {
         return false;
     }
 
-    // Cambiar estado de la cita
+
     public function cambiarEstado($nuevo_estado) {
         $query = "UPDATE " . $this->table_name . " 
                 SET estado_cita = :estado_cita
@@ -172,8 +163,6 @@ class Cita {
 
         return $stmt->execute();
     }
-
-    // Verificar si existe una cita en el mismo horario
     private function existeCitaEnHorario($excluir_actual = false) {
         $query = "SELECT COUNT(*) as count 
                 FROM " . $this->table_name . " 
@@ -202,7 +191,7 @@ class Cita {
         return $row['count'] > 0;
     }
 
-    // Obtener citas por paciente
+
     public function obtenerCitasPorPaciente($id_paciente) {
         $query = "SELECT c.*, m.nombre_completo as nombre_medico, e.nombre_especialidad
                 FROM " . $this->table_name . " c
@@ -218,7 +207,6 @@ class Cita {
         return $stmt;
     }
 
-    // Obtener citas por médico
     public function obtenerCitasPorMedico($id_medico, $fecha = null) {
         $query = "SELECT c.*, p.nombre_completo as nombre_paciente, p.dui
                 FROM " . $this->table_name . " c

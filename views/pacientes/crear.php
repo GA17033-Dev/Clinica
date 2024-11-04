@@ -1,4 +1,4 @@
-<!-- views/pacientes/crear.php -->
+
 <?php require_once 'views/templates/header.php'; ?>
 
 <div class="container mt-4">
@@ -17,7 +17,6 @@
 
                     <form action="index.php?controller=paciente&action=crear" method="POST">
                         <div class="row mb-3">
-                            <!-- Continuación de views/pacientes/crear.php -->
                             <div class="row mb-3">
                                 <div class="col-md-6">
                                     <div class="form-group">
@@ -83,4 +82,4 @@
 
 <?php require_once 'views/templates/footer.php'; ?>
 
-<!-- views/pacientes/editar.php -->
+

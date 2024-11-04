@@ -4,8 +4,6 @@ require_once 'config/Database.php';
 class Paciente {
     private $conn;
     private $table_name = "pacientes";
-
-    // Propiedades del objeto
     public $id_paciente;
     public $nombre_completo;
     public $fecha_nacimiento;
@@ -85,7 +83,6 @@ class Paciente {
 
         $stmt = $this->conn->prepare($query);
 
-        // Sanitizar datos
         $this->nombre_completo = htmlspecialchars(strip_tags($this->nombre_completo));
         $this->fecha_nacimiento = htmlspecialchars(strip_tags($this->fecha_nacimiento));
         $this->dui = htmlspecialchars(strip_tags($this->dui));
@@ -94,7 +91,6 @@ class Paciente {
         $this->direccion = htmlspecialchars(strip_tags($this->direccion));
         $this->id_paciente = htmlspecialchars(strip_tags($this->id_paciente));
 
-        // Vincular valores
         $stmt->bindParam(":nombre_completo", $this->nombre_completo);
         $stmt->bindParam(":fecha_nacimiento", $this->fecha_nacimiento);
         $stmt->bindParam(":dui", $this->dui);

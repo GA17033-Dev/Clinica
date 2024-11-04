@@ -1,4 +1,4 @@
-<!-- views/citas/crear.php -->
+
 <?php require_once 'views/templates/header.php'; ?>
 
 <div class="container mt-4">
