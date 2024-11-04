@@ -1,57 +1,76 @@
 <?php require_once 'views/templates/header.php'; ?>
 
-<div class="container mt-4">
+<div class="container mt-5">
     <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header bg-primary text-white">
-                    <h4 class="mb-0">Bienvenido al Sistema de Gestión de Citas Médicas</h4>
+        <div class="col-md-10">
+            <h1 class="text-center mb-4">Sistema de Gestión Médica</h1>
+            <p class="text-center text-muted mb-5">Gestione sus citas médicas de manera eficiente y organizada</p>
+            
+            <div class="row g-4">
+                <!-- Tarjeta de Pacientes -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="card border-0 shadow-sm h-100 hover-card">
+                        <div class="card-body text-center p-4">
+                            <div class="feature-icon bg-primary bg-gradient text-white mb-3 rounded-circle mx-auto" style="width: 50px; height: 50px; line-height: 50px;">
+                                <i class="bi bi-people"></i>
+                            </div>
+                            <h5 class="card-title mb-3">Pacientes</h5>
+                            <p class="card-text text-muted mb-4">Gestión de información de pacientes</p>
+                            <a href="index.php?controller=paciente&action=index" 
+                               class="btn btn-outline-primary btn-sm stretched-link">
+                                Gestionar Pacientes
+                            </a>
+                        </div>
+                    </div>
                 </div>
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-md-6 mb-4">
-                            <div class="card h-100">
-                                <div class="card-body">
-                                    <h5 class="card-title">Gestión de Pacientes</h5>
-                                    <p class="card-text">Administre la información de los pacientes registrados en el sistema.</p>
-                                    <a href="index.php?controller=paciente&action=index" class="btn btn-primary">
-                                        Ir a Pacientes
-                                    </a>
-                                </div>
+
+                <!-- Tarjeta de Médicos -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="card border-0 shadow-sm h-100 hover-card">
+                        <div class="card-body text-center p-4">
+                            <div class="feature-icon bg-success bg-gradient text-white mb-3 rounded-circle mx-auto" style="width: 50px; height: 50px; line-height: 50px;">
+                                <i class="bi bi-hospital"></i>
                             </div>
+                            <h5 class="card-title mb-3">Médicos</h5>
+                            <p class="card-text text-muted mb-4">Administración del personal médico</p>
+                            <a href="index.php?controller=medico&action=index" 
+                               class="btn btn-outline-success btn-sm stretched-link">
+                                Gestionar Médicos
+                            </a>
                         </div>
-                        <div class="col-md-6 mb-4">
-                            <div class="card h-100">
-                                <div class="card-body">
-                                    <h5 class="card-title">Gestión de Médicos</h5>
-                                    <p class="card-text">Administre la información de los médicos y sus especialidades.</p>
-                                    <a href="index.php?controller=medico&action=index" class="btn btn-primary">
-                                        Ir a Médicos
-                                    </a>
-                                </div>
+                    </div>
+                </div>
+
+                <!-- Tarjeta de Especialidades -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="card border-0 shadow-sm h-100 hover-card">
+                        <div class="card-body text-center p-4">
+                            <div class="feature-icon bg-info bg-gradient text-white mb-3 rounded-circle mx-auto" style="width: 50px; height: 50px; line-height: 50px;">
+                                <i class="bi bi-clipboard2-pulse"></i>
                             </div>
+                            <h5 class="card-title mb-3">Especialidades</h5>
+                            <p class="card-text text-muted mb-4">Control de especialidades médicas</p>
+                            <a href="index.php?controller=especialidad&action=index" 
+                               class="btn btn-outline-info btn-sm stretched-link">
+                                Ver Especialidades
+                            </a>
                         </div>
-                        <div class="col-md-6 mb-4">
-                            <div class="card h-100">
-                                <div class="card-body">
-                                    <h5 class="card-title">Gestión de Especialidades</h5>
-                                    <p class="card-text">Administre las especialidades médicas disponibles.</p>
-                                    <a href="index.php?controller=especialidad&action=index" class="btn btn-primary">
-                                        Ir a Especialidades
-                                    </a>
-                                </div>
+                    </div>
+                </div>
+
+                <!-- Tarjeta de Citas -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="card border-0 shadow-sm h-100 hover-card">
+                        <div class="card-body text-center p-4">
+                            <div class="feature-icon bg-warning bg-gradient text-white mb-3 rounded-circle mx-auto" style="width: 50px; height: 50px; line-height: 50px;">
+                                <i class="bi bi-calendar2-check"></i>
                             </div>
-                        </div>
-                        <div class="col-md-6 mb-4">
-                            <div class="card h-100">
-                                <div class="card-body">
-                                    <h5 class="card-title">Gestión de Citas</h5>
-                                    <p class="card-text">Administre las citas médicas y su estado.</p>
-                                    <a href="index.php?controller=cita&action=index" class="btn btn-primary">
-                                        Ir a Citas
-                                    </a>
-                                </div>
-                            </div>
+                            <h5 class="card-title mb-3">Citas</h5>
+                            <p class="card-text text-muted mb-4">Programación de citas médicas</p>
+                            <a href="index.php?controller=cita&action=index" 
+                               class="btn btn-outline-warning btn-sm stretched-link">
+                                Gestionar Citas
+                            </a>
                         </div>
                     </div>
                 </div>

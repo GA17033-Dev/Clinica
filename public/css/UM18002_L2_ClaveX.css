@@ -1,0 +1,113 @@
+/* Estilos generales */
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f8f9fa;
+    padding-top: 76px; /* Espacio para navbar fixed */
+}
+
+/* Navbar */
+.navbar {
+    background-color: rgba(255, 255, 255, 0.98) !important;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 1rem 0;
+}
+
+.navbar-brand {
+    font-weight: 600;
+    color: #2c3e50 !important;
+    font-size: 1.25rem;
+}
+
+.navbar-brand i {
+    font-size: 1.5rem;
+    color: #3498db;
+}
+
+.nav-link {
+    color: #2c3e50 !important;
+    font-weight: 500;
+    padding: 0.5rem 1rem !important;
+    transition: all 0.3s ease;
+    border-radius: 6px;
+    margin: 0 0.25rem;
+}
+
+.nav-link:hover {
+    color: #3498db !important;
+    background-color: rgba(52, 152, 219, 0.1);
+}
+
+.nav-link i {
+    color: #3498db;
+}
+
+/* Content Wrapper */
+.content-wrapper {
+    min-height: calc(100vh - 180px); /* Altura total - (navbar + footer) */
+    padding: 2rem 0;
+}
+
+/* Footer */
+.footer {
+    background-color: #ffffff;
+    padding: 2rem 0;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+    position: relative;
+    margin-top: auto;
+}
+
+.footer-brand {
+    color: #2c3e50;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+.footer-brand i {
+    font-size: 1.3rem;
+    color: #3498db;
+}
+
+.social-links {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.social-link {
+    color: #6c757d;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: #f8f9fa;
+}
+
+.social-link:hover {
+    color: #3498db;
+    background-color: rgba(52, 152, 219, 0.1);
+    transform: translateY(-2px);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .navbar-collapse {
+        background-color: white;
+        padding: 1rem;
+        border-radius: 8px;
+        margin-top: 1rem;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-link {
+        padding: 0.75rem 1rem !important;
+    }
+
+    .footer {
+        text-align: center;
+    }
+}

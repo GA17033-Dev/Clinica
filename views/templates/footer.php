@@ -1,6 +1,24 @@
-<footer class="footer mt-auto py-3 bg-light">
+</div>
+<footer class="footer">
     <div class="container">
-        <span class="text-muted">Sistema de Gestión de Citas Médicas © 2024</span>
+        <div class="row align-items-center">
+            <div class="col-md-4 text-center text-md-start">
+                <a class="footer-brand d-flex align-items-center justify-content-center justify-content-md-start" href="index.php">
+                    <i class="bi bi-hospital me-2"></i>
+                    <span>Clínica Médica</span>
+                </a>
+            </div>
+            <div class="col-md-4 text-center my-3 my-md-0">
+                <div class="social-links">
+                    <a href="#" class="social-link"><i class="bi bi-facebook"></i></a>
+                    <a href="#" class="social-link"><i class="bi bi-twitter-x"></i></a>
+                    <a href="#" class="social-link"><i class="bi bi-instagram"></i></a>
+                </div>
+            </div>
+            <div class="col-md-4 text-center text-md-end">
+                <p class="mb-0">© 2024 Clínica Médica. Todos los derechos reservados.</p>
+            </div>
+        </div>
     </div>
 </footer>
 
