@@ -13,8 +13,8 @@
                             </h5>
                             <p class="text-muted small mb-0">Gestione las citas médicas programadas</p>
                         </div>
-                        <div class="d-flex gap-2 flex-wrap">
-                            <div class="btn-group shadow-sm">
+                        <div class="d-flex justify-content-between flex-wrap">
+                            <div class="btn-group shadow-sm me-2">
                                 <a href="index.php?controller=cita&action=index&estado=programada"
                                     class="btn <?php echo (!isset($_GET['estado']) || $_GET['estado'] == 'programada') ? 'btn-primary' : 'btn-outline-primary'; ?>">
                                     <i class="bi bi-calendar-check me-1"></i>
