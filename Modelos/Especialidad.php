@@ -24,7 +24,6 @@ class Especialidad {
 
         $stmt = $this->conn->prepare($query);
 
-        // Sanitizar datos
         $this->nombre_especialidad = htmlspecialchars(strip_tags($this->nombre_especialidad));
         $this->descripcion = htmlspecialchars(strip_tags($this->descripcion));
 

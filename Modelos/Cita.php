@@ -5,7 +5,6 @@ class Cita {
     private $conn;
     private $table_name = "citas";
 
-    // Propiedades
     public $id_cita;
     public $fecha_cita;
     public $hora_cita;
@@ -32,7 +31,6 @@ class Cita {
 
         $stmt = $this->conn->prepare($query);
 
-        // Sanitizar datos
         $this->fecha_cita = htmlspecialchars(strip_tags($this->fecha_cita));
         $this->hora_cita = htmlspecialchars(strip_tags($this->hora_cita));
         $this->id_paciente = htmlspecialchars(strip_tags($this->id_paciente));
