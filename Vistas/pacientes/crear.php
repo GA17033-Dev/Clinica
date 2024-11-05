@@ -1,4 +1,4 @@
-<?php require_once 'views/templates/header.php'; ?>
+<?php require_once 'Vistas/templates/header.php'; ?>
 
 <div class="container mt-5">
     <div class="row justify-content-center">
@@ -6,12 +6,12 @@
             <div class="card border-0 shadow-sm">
                 <div class="card-header bg-white py-3">
                     <div class="d-flex align-items-center">
-                        <div class="feature-icon bg-warning bg-gradient text-white rounded-circle me-3">
-                            <i class="bi bi-person-gear"></i>
+                        <div class="feature-icon bg-primary bg-gradient text-white rounded-circle me-3">
+                            <i class="bi bi-person-plus"></i>
                         </div>
                         <div>
-                            <h5 class="mb-0">Editar Paciente</h5>
-                            <p class="text-muted small mb-0">Actualice la información del paciente</p>
+                            <h5 class="mb-0">Nuevo Paciente</h5>
+                            <p class="text-muted small mb-0">Complete el formulario para registrar un nuevo paciente</p>
                         </div>
                     </div>
                 </div>
@@ -25,21 +25,15 @@
                         </div>
                     <?php endif; ?>
 
-                    <form action="index.php?controller=paciente&action=editar&id=<?php echo $this->pacienteModel->id_paciente; ?>" 
-                          method="POST" class="needs-validation" novalidate>
-                        
+                    <form action="index.php?controller=paciente&action=crear" method="POST" class="needs-validation" novalidate>
                         <!-- Información Personal -->
                         <div class="mb-4">
-                            <h6 class="text-warning mb-3">
-                                <i class="bi bi-person me-2"></i>Información Personal
-                            </h6>
+                            <h6 class="text-primary mb-3">Información Personal</h6>
                             <div class="row g-3">
                                 <div class="col-md-6">
                                     <div class="form-floating">
                                         <input type="text" class="form-control" id="nombre_completo" 
-                                               name="nombre_completo" placeholder="Nombre Completo"
-                                               value="<?php echo htmlspecialchars($this->pacienteModel->nombre_completo); ?>" 
-                                               required>
+                                               name="nombre_completo" placeholder="Nombre Completo" required>
                                         <label for="nombre_completo">Nombre Completo</label>
                                         <div class="invalid-feedback">
                                             Por favor ingrese el nombre completo
@@ -49,9 +43,7 @@
                                 <div class="col-md-6">
                                     <div class="form-floating">
                                         <input type="date" class="form-control" id="fecha_nacimiento" 
-                                               name="fecha_nacimiento"
-                                               value="<?php echo htmlspecialchars($this->pacienteModel->fecha_nacimiento); ?>" 
-                                               required>
+                                               name="fecha_nacimiento" required>
                                         <label for="fecha_nacimiento">Fecha de Nacimiento</label>
                                         <div class="invalid-feedback">
                                             Seleccione una fecha válida
@@ -63,16 +55,12 @@
 
                         <!-- Documentación -->
                         <div class="mb-4">
-                            <h6 class="text-warning mb-3">
-                                <i class="bi bi-card-text me-2"></i>Documentación e Identificación
-                            </h6>
+                            <h6 class="text-primary mb-3">Documentación e Identificación</h6>
                             <div class="row g-3">
                                 <div class="col-md-6">
                                     <div class="form-floating">
                                         <input type="text" class="form-control" id="dui" name="dui" 
-                                               pattern="[0-9]{9}" placeholder="DUI"
-                                               value="<?php echo htmlspecialchars($this->pacienteModel->dui); ?>" 
-                                               required>
+                                               pattern="[0-9]{9}" placeholder="DUI" required>
                                         <label for="dui">DUI</label>
                                         <div class="invalid-feedback">
                                             Ingrese un DUI válido de 9 dígitos
@@ -82,9 +70,7 @@
                                 <div class="col-md-6">
                                     <div class="form-floating">
                                         <input type="text" class="form-control" id="telefono" name="telefono" 
-                                               pattern="[0-9]{8}" placeholder="Teléfono"
-                                               value="<?php echo htmlspecialchars($this->pacienteModel->telefono); ?>" 
-                                               required>
+                                               pattern="[0-9]{8}" placeholder="Teléfono" required>
                                         <label for="telefono">Teléfono</label>
                                         <div class="invalid-feedback">
                                             Ingrese un número válido de 8 dígitos
@@ -96,15 +82,12 @@
 
                         <!-- Contacto -->
                         <div class="mb-4">
-                            <h6 class="text-warning mb-3">
-                                <i class="bi bi-envelope me-2"></i>Información de Contacto
-                            </h6>
+                            <h6 class="text-primary mb-3">Información de Contacto</h6>
                             <div class="row g-3">
                                 <div class="col-md-6">
                                     <div class="form-floating">
-                                        <input type="email" class="form-control" id="correo" name="correo" 
-                                               placeholder="Correo"
-                                               value="<?php echo htmlspecialchars($this->pacienteModel->correo); ?>">
+                                        <input type="email" class="form-control" id="correo" 
+                                               name="correo" placeholder="Correo">
                                         <label for="correo">Correo Electrónico</label>
                                         <div class="invalid-feedback">
                                             Ingrese un correo válido
@@ -113,9 +96,8 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-floating">
-                                        <input type="text" class="form-control" id="direccion" name="direccion" 
-                                               placeholder="Dirección"
-                                               value="<?php echo htmlspecialchars($this->pacienteModel->direccion); ?>">
+                                        <input type="text" class="form-control" id="direccion" 
+                                               name="direccion" placeholder="Dirección">
                                         <label for="direccion">Dirección</label>
                                     </div>
                                 </div>
@@ -128,9 +110,9 @@
                                 <i class="bi bi-x-circle me-2"></i>
                                 Cancelar
                             </a>
-                            <button type="submit" class="btn btn-warning text-white">
+                            <button type="submit" class="btn btn-primary">
                                 <i class="bi bi-check-circle me-2"></i>
-                                Actualizar Paciente
+                                Guardar Paciente
                             </button>
                         </div>
                     </form>
@@ -145,8 +127,10 @@
 (function () {
     'use strict'
     
+    // Fetch all forms to apply validation styles to
     var forms = document.querySelectorAll('.needs-validation')
     
+    // Loop over them and prevent submission
     Array.prototype.slice.call(forms)
         .forEach(function (form) {
             form.addEventListener('submit', function (event) {
@@ -161,4 +145,4 @@
 })()
 </script>
 
-<?php require_once 'views/templates/footer.php'; ?>
+<?php require_once 'Vistas/templates/footer.php'; ?>

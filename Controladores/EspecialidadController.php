@@ -1,5 +1,5 @@
 <?php
-require_once 'models/Especialidad.php';
+require_once 'Modelos/Especialidad.php';
 
 class EspecialidadController {
     private $especialidadModel;
@@ -10,7 +10,7 @@ class EspecialidadController {
 
     public function index() {
         $especialidades = $this->especialidadModel->leer();
-        require_once 'views/especialidades/listar.php';
+        require_once 'Vistas/especialidades/listar.php';
     }
 
     public function crear() {
@@ -20,7 +20,7 @@ class EspecialidadController {
 
             if($this->especialidadModel->existeNombre($_POST['nombre_especialidad'])) {
                 $error = "Ya existe una especialidad con ese nombre.";
-                require_once 'views/especialidades/crear.php';
+                require_once 'Vistas/especialidades/crear.php';
                 return;
             }
 
@@ -28,10 +28,10 @@ class EspecialidadController {
                 header('Location: index.php?controller=especialidad&action=index');
             } else {
                 $error = "Ocurrió un error al crear la especialidad.";
-                require_once 'views/especialidades/crear.php';
+                require_once 'Vistas/especialidades/crear.php';
             }
         } else {
-            require_once 'views/especialidades/crear.php';
+            require_once 'Vistas/especialidades/crear.php';
         }
     }
 
@@ -49,7 +49,7 @@ class EspecialidadController {
 
             if($this->especialidadModel->existeNombre($_POST['nombre_especialidad'], $_GET['id'])) {
                 $error = "Ya existe una especialidad con ese nombre.";
-                require_once 'views/especialidades/editar.php';
+                require_once 'Vistas/especialidades/editar.php';
                 return;
             }
 
@@ -57,11 +57,11 @@ class EspecialidadController {
                 header('Location: index.php?controller=especialidad&action=index');
             } else {
                 $error = "Ocurrió un error al actualizar la especialidad.";
-                require_once 'views/especialidades/editar.php';
+                require_once 'Vistas/especialidades/editar.php';
             }
         } else {
             if($this->especialidadModel->leerUno()) {
-                require_once 'views/especialidades/editar.php';
+                require_once 'Vistas/especialidades/editar.php';
             } else {
                 header('Location: index.php?controller=especialidad&action=index');
             }
@@ -76,7 +76,7 @@ class EspecialidadController {
             } else {
                 $error = "No se puede eliminar la especialidad porque tiene médicos asociados.";
                 $especialidades = $this->especialidadModel->leer();
-                require_once 'views/especialidades/listar.php';
+                require_once 'Vistas/especialidades/listar.php';
             }
         } else {
             header('Location: index.php?controller=especialidad&action=index');

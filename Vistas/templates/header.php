@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sistema de Gestión de Citas Médicas</title>
-    <?php require_once 'views/templates/resources.php'; ?>
+    <?php require_once 'Vistas/templates/resources.php'; ?>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg fixed-top">

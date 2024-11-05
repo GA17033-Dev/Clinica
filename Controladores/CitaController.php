@@ -1,7 +1,7 @@
 <?php
-require_once 'models/Cita.php';
-require_once 'models/Paciente.php';
-require_once 'models/Medico.php';
+require_once 'Modelos/Cita.php';
+require_once 'Modelos/Paciente.php';
+require_once 'Modelos/Medico.php';
 
 class CitaController
 {
@@ -20,7 +20,7 @@ class CitaController
     {
         $estado_filtro = isset($_GET['estado']) ? $_GET['estado'] : 'programada';
         $citas = $this->citaModel->leer($estado_filtro);
-        require_once 'views/citas/listar.php';
+        require_once 'Vistas/citas/listar.php';
     }
 
     public function crear()
@@ -41,10 +41,10 @@ class CitaController
                 header('Location: index.php?controller=cita&action=index');
             } else {
                 $error = "El horario seleccionado no está disponible para este médico.";
-                require_once 'views/citas/crear.php';
+                require_once 'Vistas/citas/crear.php';
             }
         } else {
-            require_once 'views/citas/crear.php';
+            require_once 'Vistas/citas/crear.php';
         }
     }
 
@@ -74,12 +74,12 @@ class CitaController
             } else {
                 $error = "El horario seleccionado no está disponible para este médico.";
                 $cita = $this->citaModel->leerUno();
-                require_once 'views/citas/editar.php';
+                require_once 'Vistas/citas/editar.php';
             }
         } else {
             $cita = $this->citaModel->leerUno();
             if ($cita) {
-                require_once 'views/citas/editar.php';
+                require_once 'Vistas/citas/editar.php';
             } else {
                 header('Location: index.php?controller=cita&action=index');
             }
@@ -107,7 +107,7 @@ class CitaController
         } else {
             $error = "Error al cambiar el estado de la cita.";
             $citas = $this->citaModel->leer();
-            require_once 'views/citas/listar.php';
+            require_once 'Vistas/citas/listar.php';
         }
     }
 
@@ -137,10 +137,10 @@ class CitaController
                 header('Location: index.php?controller=cita&action=index');
             } else {
                 $error = "El horario seleccionado no está disponible.";
-                require_once 'views/citas/reagendar.php';
+                require_once 'Vistas/citas/reagendar.php';
             }
         } else {
-            require_once 'views/citas/reagendar.php';
+            require_once 'Vistas/citas/reagendar.php';
         }
     }
 }

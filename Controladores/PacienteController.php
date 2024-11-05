@@ -1,5 +1,5 @@
 <?php
-require_once 'models/Paciente.php';
+require_once 'Modelos/Paciente.php';
 
 class PacienteController {
     private $pacienteModel;
@@ -10,7 +10,7 @@ class PacienteController {
 
     public function index() {
         $pacientes = $this->pacienteModel->leer();
-        require_once 'views/pacientes/listar.php';
+        require_once 'Vistas/pacientes/listar.php';
     }
 
     public function crear() {
@@ -23,7 +23,7 @@ class PacienteController {
             $this->pacienteModel->direccion = $_POST['direccion'];
             if($this->pacienteModel->existeDui($_POST['dui'])) {
                 $error = "El DUI ya está registrado en el sistema.";
-                require_once 'views/pacientes/crear.php';
+                require_once 'Vistas/pacientes/crear.php';
                 return;
             }
 
@@ -31,10 +31,10 @@ class PacienteController {
                 header('Location: index.php?controller=paciente&action=index');
             } else {
                 $error = "Ocurrió un error al crear el paciente.";
-                require_once 'views/pacientes/crear.php';
+                require_once 'Vistas/pacientes/crear.php';
             }
         } else {
-            require_once 'views/pacientes/crear.php';
+            require_once 'Vistas/pacientes/crear.php';
         }
     }
 
@@ -56,7 +56,7 @@ class PacienteController {
 
             if($this->pacienteModel->existeDui($_POST['dui'], $_GET['id'])) {
                 $error = "El DUI ya está registrado en el sistema.";
-                require_once 'views/pacientes/editar.php';
+                require_once 'Vistas/pacientes/editar.php';
                 return;
             }
 
@@ -64,11 +64,11 @@ class PacienteController {
                 header('Location: index.php?controller=paciente&action=index');
             } else {
                 $error = "Ocurrió un error al actualizar el paciente.";
-                require_once 'views/pacientes/editar.php';
+                require_once 'Vistas/pacientes/editar.php';
             }
         } else {
             if($this->pacienteModel->leerUno()) {
-                require_once 'views/pacientes/editar.php';
+                require_once 'Vistas/pacientes/editar.php';
             } else {
                 header('Location: index.php?controller=paciente&action=index');
             }

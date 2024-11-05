@@ -1,4 +1,4 @@
-<?php require_once 'views/templates/header.php'; ?>
+<?php require_once 'Vistas/templates/header.php'; ?>
 
 <div class="container mt-5">
     <div class="row justify-content-center">
@@ -136,4 +136,4 @@
     })()
 </script>
 
-<?php require_once 'views/templates/footer.php'; ?>
+<?php require_once 'Vistas/templates/footer.php'; ?>

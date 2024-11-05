@@ -1,4 +1,4 @@
-<?php require_once 'views/templates/header.php'; ?>
+<?php require_once 'Vistas/templates/header.php'; ?>
 
 <div class="container mt-5">
     <div class="row justify-content-center">
@@ -10,14 +10,14 @@
                             <i class="bi bi-person-gear"></i>
                         </div>
                         <div>
-                            <h5 class="mb-0">Editar Médico</h5>
-                            <p class="text-muted small mb-0">Modifique la información del médico</p>
+                            <h5 class="mb-0">Editar Paciente</h5>
+                            <p class="text-muted small mb-0">Actualice la información del paciente</p>
                         </div>
                     </div>
                 </div>
 
                 <div class="card-body p-4">
-                    <?php if(isset($error)): ?>
+                    <?php if (isset($error)): ?>
                         <div class="alert alert-danger alert-dismissible fade show" role="alert">
                             <i class="bi bi-exclamation-triangle-fill me-2"></i>
                             <?php echo $error; ?>
@@ -25,9 +25,10 @@
                         </div>
                     <?php endif; ?>
 
-                    <form action="index.php?controller=medico&action=editar&id=<?php echo $this->medicoModel->id_medico; ?>" 
+                    <form action="index.php?controller=paciente&action=editar&id=<?php echo $this->pacienteModel->id_paciente; ?>" 
                           method="POST" class="needs-validation" novalidate>
                         
+                        <!-- Información Personal -->
                         <div class="mb-4">
                             <h6 class="text-warning mb-3">
                                 <i class="bi bi-person me-2"></i>Información Personal
@@ -37,7 +38,7 @@
                                     <div class="form-floating">
                                         <input type="text" class="form-control" id="nombre_completo" 
                                                name="nombre_completo" placeholder="Nombre Completo"
-                                               value="<?php echo htmlspecialchars($this->medicoModel->nombre_completo); ?>" 
+                                               value="<?php echo htmlspecialchars($this->pacienteModel->nombre_completo); ?>" 
                                                required>
                                         <label for="nombre_completo">Nombre Completo</label>
                                         <div class="invalid-feedback">
@@ -47,49 +48,42 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-floating">
-                                        <input type="text" class="form-control" id="numero_jvpm" 
-                                               name="numero_jvpm" pattern="[0-9]{5}" 
-                                               placeholder="JVPM"
-                                               value="<?php echo htmlspecialchars($this->medicoModel->numero_jvpm); ?>" 
+                                        <input type="date" class="form-control" id="fecha_nacimiento" 
+                                               name="fecha_nacimiento"
+                                               value="<?php echo htmlspecialchars($this->pacienteModel->fecha_nacimiento); ?>" 
                                                required>
-                                        <label for="numero_jvpm">Número JVPM</label>
+                                        <label for="fecha_nacimiento">Fecha de Nacimiento</label>
                                         <div class="invalid-feedback">
-                                            Ingrese un número JVPM válido de 5 dígitos
+                                            Seleccione una fecha válida
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
+                        <!-- Documentación -->
                         <div class="mb-4">
                             <h6 class="text-warning mb-3">
-                                <i class="bi bi-clipboard2-pulse me-2"></i>Especialidad y Contacto
+                                <i class="bi bi-card-text me-2"></i>Documentación e Identificación
                             </h6>
                             <div class="row g-3">
                                 <div class="col-md-6">
                                     <div class="form-floating">
-                                        <select class="form-select" id="id_especialidad" 
-                                                name="id_especialidad" required>
-                                            <option value="">Seleccione una especialidad</option>
-                                            <?php while ($especialidad = $especialidades->fetch(PDO::FETCH_ASSOC)): ?>
-                                                <option value="<?php echo $especialidad['id_especialidad']; ?>"
-                                                    <?php echo ($this->medicoModel->id_especialidad == $especialidad['id_especialidad']) ? 'selected' : ''; ?>>
-                                                    <?php echo htmlspecialchars($especialidad['nombre_especialidad']); ?>
-                                                </option>
-                                            <?php endwhile; ?>
-                                        </select>
-                                        <label for="id_especialidad">Especialidad</label>
+                                        <input type="text" class="form-control" id="dui" name="dui" 
+                                               pattern="[0-9]{9}" placeholder="DUI"
+                                               value="<?php echo htmlspecialchars($this->pacienteModel->dui); ?>" 
+                                               required>
+                                        <label for="dui">DUI</label>
                                         <div class="invalid-feedback">
-                                            Por favor seleccione una especialidad
+                                            Ingrese un DUI válido de 9 dígitos
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-floating">
-                                        <input type="text" class="form-control" id="telefono" 
-                                               name="telefono" pattern="[0-9]{8}" 
-                                               placeholder="Teléfono"
-                                               value="<?php echo htmlspecialchars($this->medicoModel->telefono); ?>" 
+                                        <input type="text" class="form-control" id="telefono" name="telefono" 
+                                               pattern="[0-9]{8}" placeholder="Teléfono"
+                                               value="<?php echo htmlspecialchars($this->pacienteModel->telefono); ?>" 
                                                required>
                                         <label for="telefono">Teléfono</label>
                                         <div class="invalid-feedback">
@@ -100,35 +94,43 @@
                             </div>
                         </div>
 
+                        <!-- Contacto -->
                         <div class="mb-4">
                             <h6 class="text-warning mb-3">
                                 <i class="bi bi-envelope me-2"></i>Información de Contacto
                             </h6>
-                            <div class="row">
+                            <div class="row g-3">
                                 <div class="col-md-6">
                                     <div class="form-floating">
-                                        <input type="email" class="form-control" id="correo" 
-                                               name="correo" placeholder="Correo"
-                                               value="<?php echo htmlspecialchars($this->medicoModel->correo); ?>" 
-                                               required>
+                                        <input type="email" class="form-control" id="correo" name="correo" 
+                                               placeholder="Correo"
+                                               value="<?php echo htmlspecialchars($this->pacienteModel->correo); ?>">
                                         <label for="correo">Correo Electrónico</label>
                                         <div class="invalid-feedback">
-                                            Ingrese un correo electrónico válido
+                                            Ingrese un correo válido
                                         </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" id="direccion" name="direccion" 
+                                               placeholder="Dirección"
+                                               value="<?php echo htmlspecialchars($this->pacienteModel->direccion); ?>">
+                                        <label for="direccion">Dirección</label>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
                         <div class="d-flex justify-content-end gap-2 mt-4">
-                            <a href="index.php?controller=medico&action=index" 
+                            <a href="index.php?controller=paciente&action=index" 
                                class="btn btn-light">
                                 <i class="bi bi-x-circle me-2"></i>
                                 Cancelar
                             </a>
                             <button type="submit" class="btn btn-warning text-white">
                                 <i class="bi bi-check-circle me-2"></i>
-                                Actualizar Médico
+                                Actualizar Paciente
                             </button>
                         </div>
                     </form>
@@ -139,7 +141,7 @@
 </div>
 
 <script>
-
+// Validación del formulario
 (function () {
     'use strict'
     
@@ -159,4 +161,4 @@
 })()
 </script>
 
-<?php require_once 'views/templates/footer.php'; ?>
+<?php require_once 'Vistas/templates/footer.php'; ?>

@@ -7,9 +7,8 @@ ini_set('display_errors', 1);
 $controller = isset($_GET['controller']) ? $_GET['controller'] : 'inicio';
 $action = isset($_GET['action']) ? $_GET['action'] : 'index';
 
-// Formatear el nombre del controlador
 $controllerName = ucfirst($controller) . 'Controller';
-$controllerFile = "controllers/$controllerName.php";
+$controllerFile = "Controladores/$controllerName.php";
 
 if (file_exists($controllerFile)) {
     require_once $controllerFile;
@@ -23,7 +22,7 @@ if (file_exists($controllerFile)) {
         echo "Acción no encontrada";
     }
 } else {
-    require_once 'controllers/InicioController.php';
+    require_once 'Controladores/InicioController.php';
     $controller = new InicioController();
     $controller->index();
 }

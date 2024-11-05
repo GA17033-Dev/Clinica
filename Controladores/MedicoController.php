@@ -1,6 +1,6 @@
 <?php
-require_once 'models/Medico.php';
-require_once 'models/Especialidad.php';
+require_once 'Modelos/Medico.php';
+require_once 'Modelos/Especialidad.php';
 
 class MedicoController {
     private $medicoModel;
@@ -13,7 +13,7 @@ class MedicoController {
 
     public function index() {
         $medicos = $this->medicoModel->leer();
-        require_once 'views/medicos/listar.php';
+        require_once 'Vistas/medicos/listar.php';
     }
 
     public function crear() {
@@ -29,7 +29,7 @@ class MedicoController {
             // Validar JVPM único
             if($this->medicoModel->existeJVPM($_POST['numero_jvpm'])) {
                 $error = "El número JVPM ya está registrado en el sistema.";
-                require_once 'views/medicos/crear.php';
+                require_once 'Vistas/medicos/crear.php';
                 return;
             }
 
@@ -37,10 +37,10 @@ class MedicoController {
                 header('Location: index.php?controller=medico&action=index');
             } else {
                 $error = "Ocurrió un error al crear el médico.";
-                require_once 'views/medicos/crear.php';
+                require_once 'Vistas/medicos/crear.php';
             }
         } else {
-            require_once 'views/medicos/crear.php';
+            require_once 'Vistas/medicos/crear.php';
         }
     }
 
@@ -61,7 +61,7 @@ class MedicoController {
 
             if($this->medicoModel->existeJVPM($_POST['numero_jvpm'], $_GET['id'])) {
                 $error = "El número JVPM ya está registrado en el sistema.";
-                require_once 'views/medicos/editar.php';
+                require_once 'Vistas/medicos/editar.php';
                 return;
             }
 
@@ -69,11 +69,11 @@ class MedicoController {
                 header('Location: index.php?controller=medico&action=index');
             } else {
                 $error = "Ocurrió un error al actualizar el médico.";
-                require_once 'views/medicos/editar.php';
+                require_once 'Vistas/medicos/editar.php';
             }
         } else {
             if($this->medicoModel->leerUno()) {
-                require_once 'views/medicos/editar.php';
+                require_once 'Vistas/medicos/editar.php';
             } else {
                 header('Location: index.php?controller=medico&action=index');
             }

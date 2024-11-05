@@ -16,7 +16,7 @@
                 </div>
             </div>
             <div class="col-md-4 text-center text-md-end">
-                <p class="mb-0">© 2024 Clínica Médica. Todos los derechos reservados.</p>
+                <p class="mb-0">© 2024 Clínica Médica</p>
             </div>
         </div>
     </div>
