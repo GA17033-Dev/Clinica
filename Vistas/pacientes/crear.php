@@ -26,7 +26,6 @@
                     <?php endif; ?>
 
                     <form action="index.php?controller=paciente&action=crear" method="POST" class="needs-validation" novalidate>
-                        <!-- Información Personal -->
                         <div class="mb-4">
                             <h6 class="text-primary mb-3">Información Personal</h6>
                             <div class="row g-3">
