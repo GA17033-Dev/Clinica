@@ -7,7 +7,6 @@
             <p class="text-center text-muted mb-5">Gestione sus citas médicas de manera eficiente y organizada</p>
             
             <div class="row g-4">
-                <!-- Tarjeta de Pacientes -->
                 <div class="col-md-6 col-lg-3">
                     <div class="card border-0 shadow-sm h-100 hover-card">
                         <div class="card-body text-center p-4">
@@ -23,8 +22,6 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- Tarjeta de Médicos -->
                 <div class="col-md-6 col-lg-3">
                     <div class="card border-0 shadow-sm h-100 hover-card">
                         <div class="card-body text-center p-4">
@@ -41,7 +38,6 @@
                     </div>
                 </div>
 
-                <!-- Tarjeta de Especialidades -->
                 <div class="col-md-6 col-lg-3">
                     <div class="card border-0 shadow-sm h-100 hover-card">
                         <div class="card-body text-center p-4">
@@ -58,7 +54,6 @@
                     </div>
                 </div>
 
-                <!-- Tarjeta de Citas -->
                 <div class="col-md-6 col-lg-3">
                     <div class="card border-0 shadow-sm h-100 hover-card">
                         <div class="card-body text-center p-4">

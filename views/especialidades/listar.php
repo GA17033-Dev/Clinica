@@ -71,7 +71,6 @@
                                                 </button>
                                             </div>
 
-                                            <!-- Modal de Confirmación -->
                                             <div class="modal fade" id="deleteModal<?php echo $row['id_especialidad']; ?>" tabindex="-1">
                                                 <div class="modal-dialog modal-dialog-centered">
                                                     <div class="modal-content">
@@ -125,7 +124,6 @@ $(document).ready(function() {
         ]
     });
 
-    // Inicializar tooltips
     var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
     var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
         return new bootstrap.Tooltip(tooltipTriggerEl)

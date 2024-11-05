@@ -78,7 +78,6 @@
 </div>
 
 <script>
-    // Validación del formulario
     (function() {
         'use strict'
 
@@ -95,8 +94,6 @@
                     form.classList.add('was-validated')
                 }, false)
             })
-
-        // Auto-resize para el textarea
         const textarea = document.querySelector('#descripcion');
         textarea.addEventListener('input', function() {
             this.style.height = 'auto';

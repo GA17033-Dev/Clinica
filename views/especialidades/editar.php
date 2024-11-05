@@ -32,7 +32,6 @@
                                 <i class="bi bi-clipboard2-pulse me-2"></i>Información de la Especialidad
                             </h6>
 
-                            <!-- Nombre de la Especialidad -->
                             <div class="form-floating mb-3">
                                 <input type="text" class="form-control" id="nombre_especialidad"
                                     name="nombre_especialidad"
@@ -44,7 +43,6 @@
                                 </div>
                             </div>
 
-                            <!-- Descripción -->
                             <div class="form-floating">
                                 <textarea class="form-control" id="descripcion"
                                     name="descripcion"
@@ -58,7 +56,6 @@
                             </div>
                         </div>
 
-                        <!-- Botones de acción -->
                         <div class="d-flex justify-content-end gap-2 mt-4">
                             <a href="index.php?controller=especialidad&action=index"
                                 class="btn btn-light">
@@ -78,7 +75,6 @@
 </div>
 
 <script>
-    // Validación del formulario
     (function() {
         'use strict'
 
@@ -96,14 +92,12 @@
                 }, false)
             })
 
-        // Auto-resize para el textarea
+
         const textarea = document.querySelector('#descripcion');
         textarea.addEventListener('input', function() {
             this.style.height = 'auto';
             this.style.height = (this.scrollHeight) + 'px';
         });
-
-        // Trigger inicial para ajustar la altura del textarea
         textarea.dispatchEvent(new Event('input'));
     })()
 </script>

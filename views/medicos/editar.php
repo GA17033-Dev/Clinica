@@ -28,7 +28,6 @@
                     <form action="index.php?controller=medico&action=editar&id=<?php echo $this->medicoModel->id_medico; ?>" 
                           method="POST" class="needs-validation" novalidate>
                         
-                        <!-- Información Personal -->
                         <div class="mb-4">
                             <h6 class="text-warning mb-3">
                                 <i class="bi bi-person me-2"></i>Información Personal
@@ -62,7 +61,6 @@
                             </div>
                         </div>
 
-                        <!-- Especialidad y Contacto -->
                         <div class="mb-4">
                             <h6 class="text-warning mb-3">
                                 <i class="bi bi-clipboard2-pulse me-2"></i>Especialidad y Contacto
@@ -102,7 +100,6 @@
                             </div>
                         </div>
 
-                        <!-- Correo Electrónico -->
                         <div class="mb-4">
                             <h6 class="text-warning mb-3">
                                 <i class="bi bi-envelope me-2"></i>Información de Contacto
@@ -142,7 +139,7 @@
 </div>
 
 <script>
-// Validación del formulario
+
 (function () {
     'use strict'
     

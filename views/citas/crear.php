@@ -42,8 +42,6 @@
                                                 </option>
                                             <?php endwhile; ?>
                                         </select>
-                                        <label for="id_paciente">Seleccione el Paciente</label>
-                                        <div class="invalid-feedback">Por favor seleccione un paciente</div>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -56,8 +54,6 @@
                                                 </option>
                                             <?php endwhile; ?>
                                         </select>
-                                        <label for="id_medico">Seleccione el Médico</label>
-                                        <div class="invalid-feedback">Por favor seleccione un médico</div>
                                     </div>
                                 </div>
                             </div>
@@ -133,13 +129,6 @@
         </div>
     </div>
 </div>
-
-
-<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-<link href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.min.css" rel="stylesheet" />
-
-
-<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
 <script>
     $(document).ready(function() {

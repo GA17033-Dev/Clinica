@@ -26,7 +26,6 @@
                     <?php endif; ?>
 
                     <form action="index.php?controller=medico&action=crear" method="POST" class="needs-validation" novalidate>
-                        <!-- Información Personal -->
                         <div class="mb-4">
                             <h6 class="text-success mb-3">
                                 <i class="bi bi-person me-2"></i>Información Personal
@@ -55,8 +54,6 @@
                                 </div>
                             </div>
                         </div>
-
-                        <!-- Especialidad y Contacto -->
                         <div class="mb-4">
                             <h6 class="text-success mb-3">
                                 <i class="bi bi-clipboard2-pulse me-2"></i>Especialidad y Contacto
@@ -92,8 +89,6 @@
                                 </div>
                             </div>
                         </div>
-
-                        <!-- Correo Electrónico -->
                         <div class="mb-4">
                             <h6 class="text-success mb-3">
                                 <i class="bi bi-envelope me-2"></i>Información de Contacto
@@ -131,7 +126,6 @@
 </div>
 
 <script>
-// Validación del formulario
 (function () {
     'use strict'
     
